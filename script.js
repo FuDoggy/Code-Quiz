@@ -53,35 +53,48 @@ var questions = [
 ]
 var currentQuestion = 0;
 var score = 0;
-var timer = 60;
-
-
-document.querySelector("#start").addEventListener("click", appendQuestion)
-
-function appendQuestion(){
+var timeleft = 60;
 quizQuestions.innerHTML = "";
-var h2 = document.createElement("h2");
-h2.textContent = questions[currentQuestion].question;
-quizQuestions.appendChild(h2);
+
+function start(){
+    document.querySelector("#start").style.display = "none";
+   
+    var downloadTimer = setInterval(function(){
+        timeleft--;
+        document.getElementById("countdownTimer").textContent = timeleft;
+        if(timeleft === 0)
+            clearInterval(downloadTimer);
+        }, 1000);
+
+        generateQuestions();
+    };   
+
+function generateQuestions() {
+    quizQuestions.innerHTML = "";
+    var h2 = document.createElement("h2");
+    h2.textContent = questions[currentQuestion].question;
+    quizQuestions.appendChild(h2);
 
 for(var i = 0; i < questions[currentQuestion].answers.length; i++) {
-var buttons = document.createElement("button")
-buttons.textContent = questions[currentQuestion].answers[i];
-buttons.addEventListener("click", checkAnswer)
-quizQuestions.appendChild(buttons)
+    var buttons = document.createElement("button")
+    buttons.textContent = questions[currentQuestion].answers[i];
+    buttons.addEventListener("click", checkAnswer)
+    quizQuestions.appendChild(buttons)
+    }
 }
-}   
+
 
 function checkAnswer(){
     if (this.textContent === questions[currentQuestion].correct){
         alert ("Correct!")
         score++;
-}
+        
+    }
     else {
-    alert("WRONG!")
-}
-currentQuestion++;
-appendQuestion();
-alert ("Your score is " + score +"/10")
-}
+        alert("WRONG!")
+    }
+    currentQuestion++;
+    generateQuestions()
 
+}
+document.getElementById("start").addEventListener("click", start)
