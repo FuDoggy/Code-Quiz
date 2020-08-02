@@ -54,6 +54,7 @@ var questions = [
 var currentQuestion = 0;
 var score = 0;
 var timeleft = 60;
+
 quizQuestions.innerHTML = "";
 
 function start(){
@@ -75,26 +76,44 @@ function generateQuestions() {
     h2.textContent = questions[currentQuestion].question;
     quizQuestions.appendChild(h2);
 
-for(var i = 0; i < questions[currentQuestion].answers.length; i++) {
+for (var i = 0; i < questions[currentQuestion].answers.length; i++) {
     var buttons = document.createElement("button")
     buttons.textContent = questions[currentQuestion].answers[i];
     buttons.addEventListener("click", checkAnswer)
     quizQuestions.appendChild(buttons)
+    
+
     }
 }
-
-
+const quizAnswerEl = document.getElementById('displayAnswer');
 function checkAnswer(){
-    if (this.textContent === questions[currentQuestion].correct){
-        alert ("Correct!")
+    if (this.textContent === questions[currentQuestion].correct) {
+       
+        quizAnswerEl.innerText = "Correct";
+        // var correct = document.createElement("h2")
+        // correct.textContent = "CORRECT!";
+        // displayAnswer.appendChild(correct);
+        // console.log(correct)
+        
+        // console.log(correct)
+        //select the element with quizContent id
+        //append correct to that element
         score++;
         
+        setTimeout(function() {
+        quizAnswerEl.innerText = "";
+        }, 2000)
+    
     }
     else {
-        alert("WRONG!")
+        quizAnswerEl.innerText = "Wrong";
+        setTimeout(function() {
+            quizAnswerEl.innerText = "";
+            }, 2000)
     }
+
     currentQuestion++;
     generateQuestions()
-
+     
 }
 document.getElementById("start").addEventListener("click", start)
