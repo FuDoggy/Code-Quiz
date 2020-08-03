@@ -54,12 +54,12 @@ var questions = [
 var currentQuestion = 0;
 var score = 0;
 var timeleft = 60;
+var timer;
 
 quizQuestions.innerHTML = "";
 
 function start(){
     document.querySelector("#start").style.display = "none";
-   
     var downloadTimer = setInterval(function(){
         timeleft--;
         document.getElementById("countdownTimer").textContent = timeleft;
@@ -88,32 +88,22 @@ for (var i = 0; i < questions[currentQuestion].answers.length; i++) {
 const quizAnswerEl = document.getElementById('displayAnswer');
 function checkAnswer(){
     if (this.textContent === questions[currentQuestion].correct) {
-       
-        quizAnswerEl.innerText = "Correct";
-        // var correct = document.createElement("h2")
-        // correct.textContent = "CORRECT!";
-        // displayAnswer.appendChild(correct);
-        // console.log(correct)
-        
-        // console.log(correct)
-        //select the element with quizContent id
-        //append correct to that element
+        quizAnswerEl.textContent = "Correct";
         score++;
+    }   
         
-        setTimeout(function() {
-        quizAnswerEl.innerText = "";
-        }, 2000)
-    
-    }
     else {
-        quizAnswerEl.innerText = "Wrong";
-        setTimeout(function() {
-            quizAnswerEl.innerText = "";
-            }, 2000)
+        quizAnswerEl.textContent = "Wrong";
+        
     }
 
     currentQuestion++;
-    generateQuestions()
+    setTimeout(generateQuestions, 500)
      
 }
+quizQuestions.addEventListener("click", function() {
+    timer = setInterval(downloadTimer, 2000);
+    generateQuestions();
+});
+
 document.getElementById("start").addEventListener("click", start)

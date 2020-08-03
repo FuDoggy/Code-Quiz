@@ -1,0 +1,39 @@
+.jumbotron-fluid {
+    background-image: url("https://s1.thcdn.com/widgets/96-en/09/1920x586-jb-z-starwars-page-header-022609.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height:50vh;
+    
+}
+
+.display-4 {
+    text-align: center;
+    margin-top: 600px;
+    font-size: 24px;
+    font-weight: 200em;
+    color: white;
+}
+
+#start {
+    text-align: center;
+    margin-top: 50px;
+}
+
+
+#countdown-timer {
+    color: #4CAF50;
+    font-size: 16px;
+    font-weight: 200px;
+}
+
+#buttons {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+      }

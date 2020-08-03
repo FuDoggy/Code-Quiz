@@ -1,42 +1,16 @@
-# 04 Web APIs: Code Quiz
+# STAR WARS QUIZ BY KEVIN FUJIMOTO
 
-As you proceed in your career as a web developer, you will probably be asked to complete a coding assessment, which is typically a combination of multiple-choice questions and interactive challenges. Build a timed code quiz with multiple-choice questions. This app will run in the browser and feature dynamically updated HTML and CSS powered by your JavaScript code. It will also feature a clean and polished user interface and be responsive, ensuring that it adapts to multiple screen sizes.
+## CHALLENGES
+I felt frustrated many times during this assignment.  In prior assignments, I did very well, got decent grades, and most importantly, understood what I was doing.  However, in this assignment, the situation was quite different.  For the first time in this bootcamp, I felt ill-prepared for this assignment, despite 6-7 additional hours per day, in addition to the 4-hour class time.  I worked 16 hours on the weekend to attempt to finish the assignment, but was unable to complete some functionality requirements.  I am very disheartened by the fact that I invested so much time and energy on this quiz assignment, yet I do not feel as though I have the output that represents that investment.  I found myself utilizing BCS assistants on multiple occasions, along with tutoring sessions, and all TA/Instructor office hours.  I found it difficult to communicate my issues on Slack, rather than speaking with someone on a Zoom call.  I often received code on Slack that would not be applicable to my quiz game in that it did not take into account the structure of my HTML/JavaScript.  
 
-## User Story
+My Instructor (Bryan), TA (Wilson), and Tutor (Chad) were all immensely helpful.  However, it is very apparent to me that there has been a shift in the method by which students are helped.  The help in prior weeks was to explain thoroughly and assist with the coding.  Now, it appears that there is a greater sense of focus on Google and figuring out code and concepts that we have not yet been exposed to.
 
-```
-AS A coding bootcamp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT I can gauge my progress compared to my peers
-```
+## USAGE
 
-## Acceptance Criteria
+Please be gentle with your grading of this quiz.  I spent around 20-25 hours on this assignment, but I was not able to execute all functionality.  This Star Wars themed quiz game is designed to ask 10 mutliple choice trivia questions in succession with a countdown timer and score that keeps track of correct answers.  The start button will initiate the quiz and timer, and the game is over when the timer reaches 0.  When the user clicks an answer button, the answer choice will be evaluated on click to determine if the answer is correct.  The user will be instantly notified on the selection of each question whether they are correct or incorrect.  For each correct answer, the user will receive +1 to score, and will receive +0 to score and a 5 sec penalty for an incorrect answer.  High scores will be saved and will be stored in local storage, so even if the user closes their browser, their high scores will be saved and presented when rerunning the game.
 
-```
-GIVEN I am taking a code quiz
-WHEN I click the start button
-THEN a timer starts and I am presented with a question
-WHEN I answer a question
-THEN I am presented with another question
-WHEN I answer a question incorrectly
-THEN time is subtracted from the clock
-WHEN all questions are answered or the timer reaches 0
-THEN the game is over
-WHEN the game is over
-THEN I can save my initials and score
-```
+## AUTHORS AND ACKNOWLEDGEMENT
+I worked with Tim Hellman and Blake Lampkin on this assignment.  I also had the assistance my tutor, Chad Tao.  
 
-The following animation demonstrates the application functionality:
 
-![code quiz](./Assets/04-web-apis-homework-demo.gif)
 
-### Review
-
-You are required to submit the following for review:
-
-* The URL of the functional, deployed application.
-
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
-
-- - -
-© 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
