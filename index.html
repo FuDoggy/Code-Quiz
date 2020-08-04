@@ -26,6 +26,7 @@
 
       <div class = "container">
           <div class = "row">
+              <span id="warning" style="margin:auto;color:red;font-size: large;"></span>
               <div class = "col-xs-12 col-md-12" id = "quizContent">
 
               </div>
@@ -33,6 +34,12 @@
                     <div class = "col-xs-12 col-md-12" id = "displayAnswer"></div>
                 </div>
           </div>
+          <div id="highscoreDiv" style="display:none">
+              <h3>Enter your initials to save your high score:</h3>
+          <input type="text" id="highscore">
+          <button id="submitHighscore">Submit</button>
+          </div>
+          
       </div>
        <script src="script.js"></script>  
 </body>

@@ -1,4 +1,6 @@
 var quizQuestions = document.querySelector("#quizContent");
+var highscoreDiv = document.getElementById("highscoreDiv");
+var quizAnswerEl = document.getElementById("displayAnswer");
 var questions = [
     {
     question:  "What planet is Maz Kanata from?",
@@ -55,23 +57,35 @@ var currentQuestion = 0;
 var score = 0;
 var timeleft = 60;
 var timer;
-
+var clicked = false;
+var downloadTimer;
 quizQuestions.innerHTML = "";
 
 function start(){
     document.querySelector("#start").style.display = "none";
-    var downloadTimer = setInterval(function(){
+     downloadTimer = setInterval(function(){
         timeleft--;
         document.getElementById("countdownTimer").textContent = timeleft;
-        if(timeleft === 0)
-            clearInterval(downloadTimer);
+        if(timeleft === 0)       
+            //call endgame function;
+            endGame()
         }, 1000);
 
         generateQuestions();
     };   
-
+function endGame() {
+    clearInterval(downloadTimer);
+    highscoreDiv.setAttribute("style", "display:block")
+}
 function generateQuestions() {
+    //check if on last question, if past last question, call this endgame function
+    if (currentQuestion === 10) {
+        endGame();
+        return;
+    }
+    document.getElementById("warning").textContent = ""
     quizQuestions.innerHTML = "";
+    quizAnswerEl.textContent = "";
     var h2 = document.createElement("h2");
     h2.textContent = questions[currentQuestion].question;
     quizQuestions.appendChild(h2);
@@ -79,31 +93,45 @@ function generateQuestions() {
 for (var i = 0; i < questions[currentQuestion].answers.length; i++) {
     var buttons = document.createElement("button")
     buttons.textContent = questions[currentQuestion].answers[i];
-    buttons.addEventListener("click", checkAnswer)
+    buttons.addEventListener("click", checkAnswer) 
     quizQuestions.appendChild(buttons)
-    
-
     }
+    
 }
-const quizAnswerEl = document.getElementById('displayAnswer');
+quizAnswerEl = document.getElementById('displayAnswer');
 function checkAnswer(){
     if (this.textContent === questions[currentQuestion].correct) {
-        quizAnswerEl.textContent = "Correct";
+        quizAnswerEl.textContent = "THE FORCE IS STRONG WITH YOU!";
         score++;
     }   
         
     else {
-        quizAnswerEl.textContent = "Wrong";
-        
+        quizAnswerEl.textContent = "YOU NEED MORE TRAINING, PADAWAN!";
     }
 
     currentQuestion++;
-    setTimeout(generateQuestions, 500)
-     
+    setTimeout(generateQuestions, 1500)
 }
-quizQuestions.addEventListener("click", function() {
-    timer = setInterval(downloadTimer, 2000);
-    generateQuestions();
-});
+var saveScoreArr = [];
+saveScore()
+var submitInitials = document.getElementById("highscore").value;
+var saveHighScore = {
+    Initials: submitInitials, Score: score
+};
 
-document.getElementById("start").addEventListener("click", start)
+function saveScore(){
+    saveHighScore = JSON.parse(localStorage.getItem('saveHighScore'));
+    saveScoreArr.push(saveHighScore)
+    //take the final score
+    //take the initials from the input w id highscore
+    //store it in localstorage
+    //localStorage.setItem
+    localStorage.setItem("saveHighScore", JSON.stringify(saveScoreArr))
+    console.log(saveScoreArr)
+}
+
+
+// = highscores.name
+
+document.getElementById("start").addEventListener("click", start);
+document.getElementById("submitHighscore").addEventListener("click", saveScore);
